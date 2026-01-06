@@ -1,0 +1,77 @@
+{
+  "start_node": "dsa_array_1",
+  "nodes": {
+    "dsa_array_1": {
+      "section": "dsa",
+      "type": "coding_reasoning",
+      "difficulty": "easy",
+      "prompt_id": "array_traversal_logic"
+    },
+    "dsa_hashing_1": {
+      "section": "dsa",
+      "type": "coding_reasoning",
+      "difficulty": "easy",
+      "prompt_id": "hashmap_frequency"
+    },
+    "dsa_recursion_1": {
+      "section": "dsa",
+      "type": "conceptual",
+      "difficulty": "medium",
+      "prompt_id": "recursion_stack_reasoning"
+    },
+    "dsa_dp_1": {
+      "section": "dsa",
+      "type": "conceptual",
+      "difficulty": "medium",
+      "prompt_id": "dynamic_programming_state"
+    },
+    "debug_runtime_1": {
+      "section": "debugging",
+      "type": "bug_identification",
+      "difficulty": "easy",
+      "prompt_id": "null_pointer_error"
+    },
+    "debug_logic_1": {
+      "section": "debugging",
+      "type": "logic_trace",
+      "difficulty": "medium",
+      "prompt_id": "off_by_one_loop"
+    },
+    "debug_perf_1": {
+      "section": "debugging",
+      "type": "performance_analysis",
+      "difficulty": "medium",
+      "prompt_id": "inefficient_loop"
+    },
+    "sys_design_api_1": {
+      "section": "system_design",
+      "type": "verbal_design",
+      "difficulty": "easy",
+      "prompt_id": "design_rest_service"
+    },
+    "sys_design_scale_1": {
+      "section": "system_design",
+      "type": "verbal_design",
+      "difficulty": "medium",
+      "prompt_id": "scaling_read_heavy"
+    },
+    "sys_design_tradeoff_1": {
+      "section": "system_design",
+      "type": "verbal_reasoning",
+      "difficulty": "medium",
+      "prompt_id": "cache_vs_db_tradeoff"
+    }
+  },
+  "edges": [
+    { "from": "dsa_array_1", "to": "dsa_hashing_1" },
+    { "from": "dsa_hashing_1", "to": "dsa_recursion_1" },
+    { "from": "dsa_recursion_1", "to": "dsa_dp_1" },
+    { "from": "dsa_dp_1", "to": "debug_runtime_1" },
+    { "from": "debug_runtime_1", "to": "debug_logic_1" },
+    { "from": "debug_logic_1", "to": "debug_perf_1" },
+    { "from": "debug_perf_1", "to": "sys_design_api_1" },
+    { "from": "sys_design_api_1", "to": "sys_design_scale_1" },
+    { "from": "sys_design_scale_1", "to": "sys_design_tradeoff_1" }
+  ],
+  "end_node": "sys_design_tradeoff_1"
+}
