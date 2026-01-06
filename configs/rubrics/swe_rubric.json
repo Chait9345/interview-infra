@@ -1,0 +1,183 @@
+{
+  "role": "Software Engineer",
+  "level": ["Entry", "Mid"],
+  "sections": [
+    {
+      "section_id": "dsa",
+      "name": "DSA",
+      "description": "Evaluation of core algorithmic thinking and data structure usage",
+      "skills": [
+        {
+          "skill_id": "dsa_problem_decomposition",
+          "description": "Ability to break down a problem into smaller, solvable components",
+          "score_range": "1-10",
+          "required_evidence": [
+            "Clear articulation of subproblems",
+            "Stepwise approach to solving the task"
+          ],
+          "explicitly_disallowed_evidence": [
+            "Guessing the final solution without explanation",
+            "Referencing memorized solutions without mapping to the current problem"
+          ]
+        },
+        {
+          "skill_id": "dsa_data_structure_selection",
+          "description": "Ability to choose appropriate data structures for the problem context",
+          "score_range": "1-10",
+          "required_evidence": [
+            "Explicit mention of chosen data structure",
+            "Justification tied to access patterns or constraints"
+          ],
+          "explicitly_disallowed_evidence": [
+            "Using data structures without justification",
+            "Switching data structures mid-solution without explanation"
+          ]
+        },
+        {
+          "skill_id": "dsa_algorithmic_reasoning",
+          "description": "Ability to reason about algorithm behavior and correctness",
+          "score_range": "1-10",
+          "required_evidence": [
+            "Explanation of algorithm flow",
+            "Handling of edge cases"
+          ],
+          "explicitly_disallowed_evidence": [
+            "Hand-waving correctness claims",
+            "Ignoring edge cases entirely"
+          ]
+        },
+        {
+          "skill_id": "dsa_complexity_awareness",
+          "description": "Understanding of time and space complexity implications",
+          "score_range": "1-10",
+          "required_evidence": [
+            "Stated time complexity",
+            "Stated space complexity"
+          ],
+          "explicitly_disallowed_evidence": [
+            "Incorrect complexity claims without correction",
+            "Avoiding complexity discussion when prompted"
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "debugging",
+      "name": "Debugging",
+      "description": "Evaluation of reasoning about faulty or inefficient code",
+      "skills": [
+        {
+          "skill_id": "debug_error_identification",
+          "description": "Ability to locate the source of a bug or failure",
+          "score_range": "1-10",
+          "required_evidence": [
+            "Identification of the faulty line or logic block",
+            "Explanation of why it causes failure"
+          ],
+          "explicitly_disallowed_evidence": [
+            "Trial-and-error guesses",
+            "Blaming external systems without evidence"
+          ]
+        },
+        {
+          "skill_id": "debug_logical_tracing",
+          "description": "Ability to mentally execute code step by step",
+          "score_range": "1-10",
+          "required_evidence": [
+            "Walkthrough of variable states",
+            "Explanation of control flow"
+          ],
+          "explicitly_disallowed_evidence": [
+            "Skipping steps in execution",
+            "Jumping directly to conclusions"
+          ]
+        },
+        {
+          "skill_id": "debug_fix_reasoning",
+          "description": "Ability to propose a correct and minimal fix",
+          "score_range": "1-10",
+          "required_evidence": [
+            "Clear description of the fix",
+            "Explanation of why the fix resolves the issue"
+          ],
+          "explicitly_disallowed_evidence": [
+            "Large rewrites without justification",
+            "Fixes that introduce new assumptions"
+          ]
+        },
+        {
+          "skill_id": "debug_performance_awareness",
+          "description": "Ability to recognize inefficient code paths",
+          "score_range": "1-10",
+          "required_evidence": [
+            "Identification of the inefficient construct",
+            "Explanation of its impact"
+          ],
+          "explicitly_disallowed_evidence": [
+            "Vague statements about slowness",
+            "Unrelated optimization discussions"
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "system_design",
+      "name": "System Design",
+      "description": "Evaluation of foundational system design thinking through verbal discussion",
+      "skills": [
+        {
+          "skill_id": "sys_design_requirement_clarity",
+          "description": "Ability to restate and clarify system requirements",
+          "score_range": "1-10",
+          "required_evidence": [
+            "Clear restatement of functional requirements",
+            "Identification of constraints"
+          ],
+          "explicitly_disallowed_evidence": [
+            "Assuming requirements without stating them",
+            "Ignoring stated constraints"
+          ]
+        },
+        {
+          "skill_id": "sys_design_component_identification",
+          "description": "Ability to identify core system components",
+          "score_range": "1-10",
+          "required_evidence": [
+            "Identification of major components",
+            "Explanation of each component’s role"
+          ],
+          "explicitly_disallowed_evidence": [
+            "Listing components without explanation",
+            "Introducing unnecessary components"
+          ]
+        },
+        {
+          "skill_id": "sys_design_data_flow_reasoning",
+          "description": "Ability to reason about data flow between components",
+          "score_range": "1-10",
+          "required_evidence": [
+            "Description of how data moves through the system",
+            "Explanation of read/write paths"
+          ],
+          "explicitly_disallowed_evidence": [
+            "Abstract descriptions without concrete flow",
+            "Ignoring data consistency considerations"
+          ]
+        },
+        {
+          "skill_id": "sys_design_tradeoff_awareness",
+          "description": "Ability to articulate basic design trade-offs",
+          "score_range": "1-10",
+          "required_evidence": [
+            "Explicit comparison of at least two options",
+            "Stated pros and cons"
+          ],
+          "explicitly_disallowed_evidence": [
+            "Claiming a single best solution without trade-offs",
+            "Appealing to authority or best practices without reasoning"
+          ]
+        }
+      ]
+    }
+  ]
+}
