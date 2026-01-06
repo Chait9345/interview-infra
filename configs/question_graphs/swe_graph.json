@@ -1,77 +1,295 @@
 {
   "start_node": "dsa_array_1",
+  "end_node": "sys_design_tradeoff_1",
   "nodes": {
     "dsa_array_1": {
       "section": "dsa",
       "type": "coding_reasoning",
       "difficulty": "easy",
-      "prompt_id": "array_traversal_logic"
+      "prompt_id": "array_traversal_logic",
+      "success_threshold": 8,
+      "partial_threshold": 5,
+      "failure_threshold": 0,
+      "transitions": {
+        "probe_deeper": {
+          "if": "score >= 8 AND reasoning_clear == true",
+          "then": "PROBE_SAME_NODE_DEEPER"
+        },
+        "downgrade_difficulty": {
+          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
+          "then": "dsa_array_1"
+        },
+        "move_forward": {
+          "if": "score >= 5 AND score < 8",
+          "then": "dsa_hashing_1"
+        }
+      },
+      "edge_cases": {
+        "silence_over_10s": "downgrade_difficulty",
+        "guessing_without_reasoning": "downgrade_difficulty",
+        "incomplete_answer": "move_forward"
+      }
     },
+
     "dsa_hashing_1": {
       "section": "dsa",
       "type": "coding_reasoning",
       "difficulty": "easy",
-      "prompt_id": "hashmap_frequency"
+      "prompt_id": "hashmap_frequency",
+      "success_threshold": 8,
+      "partial_threshold": 5,
+      "failure_threshold": 0,
+      "transitions": {
+        "probe_deeper": {
+          "if": "score >= 8 AND reasoning_clear == true",
+          "then": "PROBE_SAME_NODE_DEEPER"
+        },
+        "downgrade_difficulty": {
+          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
+          "then": "dsa_array_1"
+        },
+        "move_forward": {
+          "if": "score >= 5",
+          "then": "dsa_recursion_1"
+        }
+      },
+      "edge_cases": {
+        "silence_over_10s": "downgrade_difficulty",
+        "guessing_without_reasoning": "downgrade_difficulty",
+        "partial_correct": "move_forward"
+      }
     },
+
     "dsa_recursion_1": {
       "section": "dsa",
       "type": "conceptual",
       "difficulty": "medium",
-      "prompt_id": "recursion_stack_reasoning"
+      "prompt_id": "recursion_stack_reasoning",
+      "success_threshold": 7,
+      "partial_threshold": 4,
+      "failure_threshold": 0,
+      "transitions": {
+        "probe_deeper": {
+          "if": "score >= 7 AND reasoning_clear == true",
+          "then": "PROBE_SAME_NODE_DEEPER"
+        },
+        "downgrade_difficulty": {
+          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
+          "then": "dsa_hashing_1"
+        },
+        "move_forward": {
+          "if": "score >= 4",
+          "then": "dsa_dp_1"
+        }
+      },
+      "edge_cases": {
+        "silence_over_10s": "downgrade_difficulty",
+        "guessing_without_reasoning": "downgrade_difficulty",
+        "incomplete_answer": "move_forward"
+      }
     },
+
     "dsa_dp_1": {
       "section": "dsa",
       "type": "conceptual",
       "difficulty": "medium",
-      "prompt_id": "dynamic_programming_state"
+      "prompt_id": "dynamic_programming_state",
+      "success_threshold": 7,
+      "partial_threshold": 4,
+      "failure_threshold": 0,
+      "transitions": {
+        "probe_deeper": {
+          "if": "score >= 7 AND reasoning_clear == true",
+          "then": "PROBE_SAME_NODE_DEEPER"
+        },
+        "downgrade_difficulty": {
+          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
+          "then": "dsa_recursion_1"
+        },
+        "move_forward": {
+          "if": "score >= 4",
+          "then": "debug_runtime_1"
+        }
+      },
+      "edge_cases": {
+        "silence_over_10s": "downgrade_difficulty",
+        "guessing_without_reasoning": "downgrade_difficulty",
+        "partial_correct": "move_forward"
+      }
     },
+
     "debug_runtime_1": {
       "section": "debugging",
       "type": "bug_identification",
       "difficulty": "easy",
-      "prompt_id": "null_pointer_error"
+      "prompt_id": "null_pointer_error",
+      "success_threshold": 8,
+      "partial_threshold": 5,
+      "failure_threshold": 0,
+      "transitions": {
+        "probe_deeper": {
+          "if": "score >= 8 AND reasoning_clear == true",
+          "then": "PROBE_SAME_NODE_DEEPER"
+        },
+        "downgrade_difficulty": {
+          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
+          "then": "dsa_dp_1"
+        },
+        "move_forward": {
+          "if": "score >= 5",
+          "then": "debug_logic_1"
+        }
+      },
+      "edge_cases": {
+        "silence_over_10s": "downgrade_difficulty",
+        "guessing_without_reasoning": "downgrade_difficulty",
+        "incomplete_answer": "move_forward"
+      }
     },
+
     "debug_logic_1": {
       "section": "debugging",
       "type": "logic_trace",
       "difficulty": "medium",
-      "prompt_id": "off_by_one_loop"
+      "prompt_id": "off_by_one_loop",
+      "success_threshold": 7,
+      "partial_threshold": 4,
+      "failure_threshold": 0,
+      "transitions": {
+        "probe_deeper": {
+          "if": "score >= 7 AND reasoning_clear == true",
+          "then": "PROBE_SAME_NODE_DEEPER"
+        },
+        "downgrade_difficulty": {
+          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
+          "then": "debug_runtime_1"
+        },
+        "move_forward": {
+          "if": "score >= 4",
+          "then": "debug_perf_1"
+        }
+      },
+      "edge_cases": {
+        "silence_over_10s": "downgrade_difficulty",
+        "guessing_without_reasoning": "downgrade_difficulty",
+        "partial_correct": "move_forward"
+      }
     },
+
     "debug_perf_1": {
       "section": "debugging",
       "type": "performance_analysis",
       "difficulty": "medium",
-      "prompt_id": "inefficient_loop"
+      "prompt_id": "inefficient_loop",
+      "success_threshold": 7,
+      "partial_threshold": 4,
+      "failure_threshold": 0,
+      "transitions": {
+        "probe_deeper": {
+          "if": "score >= 7 AND reasoning_clear == true",
+          "then": "PROBE_SAME_NODE_DEEPER"
+        },
+        "downgrade_difficulty": {
+          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
+          "then": "debug_logic_1"
+        },
+        "move_forward": {
+          "if": "score >= 4",
+          "then": "sys_design_api_1"
+        }
+      },
+      "edge_cases": {
+        "silence_over_10s": "downgrade_difficulty",
+        "guessing_without_reasoning": "downgrade_difficulty",
+        "incomplete_answer": "move_forward"
+      }
     },
+
     "sys_design_api_1": {
       "section": "system_design",
       "type": "verbal_design",
       "difficulty": "easy",
-      "prompt_id": "design_rest_service"
+      "prompt_id": "design_rest_service",
+      "success_threshold": 8,
+      "partial_threshold": 5,
+      "failure_threshold": 0,
+      "transitions": {
+        "probe_deeper": {
+          "if": "score >= 8 AND reasoning_clear == true",
+          "then": "PROBE_SAME_NODE_DEEPER"
+        },
+        "downgrade_difficulty": {
+          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
+          "then": "debug_perf_1"
+        },
+        "move_forward": {
+          "if": "score >= 5",
+          "then": "sys_design_scale_1"
+        }
+      },
+      "edge_cases": {
+        "silence_over_10s": "downgrade_difficulty",
+        "guessing_without_reasoning": "downgrade_difficulty",
+        "partial_correct": "move_forward"
+      }
     },
+
     "sys_design_scale_1": {
       "section": "system_design",
       "type": "verbal_design",
       "difficulty": "medium",
-      "prompt_id": "scaling_read_heavy"
+      "prompt_id": "scaling_read_heavy",
+      "success_threshold": 7,
+      "partial_threshold": 4,
+      "failure_threshold": 0,
+      "transitions": {
+        "probe_deeper": {
+          "if": "score >= 7 AND reasoning_clear == true",
+          "then": "PROBE_SAME_NODE_DEEPER"
+        },
+        "downgrade_difficulty": {
+          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
+          "then": "sys_design_api_1"
+        },
+        "move_forward": {
+          "if": "score >= 4",
+          "then": "sys_design_tradeoff_1"
+        }
+      },
+      "edge_cases": {
+        "silence_over_10s": "downgrade_difficulty",
+        "guessing_without_reasoning": "downgrade_difficulty",
+        "incomplete_answer": "move_forward"
+      }
     },
+
     "sys_design_tradeoff_1": {
       "section": "system_design",
       "type": "verbal_reasoning",
       "difficulty": "medium",
-      "prompt_id": "cache_vs_db_tradeoff"
+      "prompt_id": "cache_vs_db_tradeoff",
+      "success_threshold": 7,
+      "partial_threshold": 4,
+      "failure_threshold": 0,
+      "transitions": {
+        "probe_deeper": {
+          "if": "score >= 7 AND reasoning_clear == true",
+          "then": "PROBE_SAME_NODE_DEEPER"
+        },
+        "downgrade_difficulty": {
+          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
+          "then": "sys_design_scale_1"
+        },
+        "move_forward": {
+          "if": "score >= 4",
+          "then": "END_INTERVIEW"
+        }
+      },
+      "edge_cases": {
+        "silence_over_10s": "downgrade_difficulty",
+        "guessing_without_reasoning": "downgrade_difficulty",
+        "partial_correct": "move_forward"
+      }
     }
-  },
-  "edges": [
-    { "from": "dsa_array_1", "to": "dsa_hashing_1" },
-    { "from": "dsa_hashing_1", "to": "dsa_recursion_1" },
-    { "from": "dsa_recursion_1", "to": "dsa_dp_1" },
-    { "from": "dsa_dp_1", "to": "debug_runtime_1" },
-    { "from": "debug_runtime_1", "to": "debug_logic_1" },
-    { "from": "debug_logic_1", "to": "debug_perf_1" },
-    { "from": "debug_perf_1", "to": "sys_design_api_1" },
-    { "from": "sys_design_api_1", "to": "sys_design_scale_1" },
-    { "from": "sys_design_scale_1", "to": "sys_design_tradeoff_1" }
-  ],
-  "end_node": "sys_design_tradeoff_1"
+  }
 }
