@@ -1,0 +1,73 @@
+{
+  "evaluation_guards": {
+    "deterministic": true,
+    "rule_based": true,
+    "no_ml": true,
+    "no_probabilities": true,
+    "no_personality_inference": true,
+    "no_background_inference": true
+  },
+
+  "confidence_levels": {
+    "HIGH": {
+      "required_conditions": [
+        "All evaluated sections contain at least one skill with non-minimum scores.",
+        "Evidence is present from at least two distinct sources (transcript and code) for the majority of evaluated skills.",
+        "No unresolved conflicts exist between verbal explanations and code behavior."
+      ],
+      "signals_increasing_confidence": [
+        "Explicit alignment between stated approach and implemented code.",
+        "Consistent reasoning demonstrated across multiple questions or tasks.",
+        "Explicit correction of earlier mistakes with clear justification."
+      ],
+      "signals_reducing_confidence": [
+        "Minor inconsistencies between explanation and implementation.",
+        "Noticeable lack of depth in one section despite stronger performance elsewhere."
+      ]
+    },
+
+    "MEDIUM": {
+      "required_conditions": [
+        "Evaluated skills contain a mix of strong, partial, and ambiguous evidence.",
+        "At least one section contains mid-range scores based on observable evidence."
+      ],
+      "signals_increasing_confidence": [
+        "Correct outcomes achieved with incomplete or partially articulated explanations.",
+        "Partial implementations that address core requirements while omitting edge cases."
+      ],
+      "signals_reducing_confidence": [
+        "Repeated reliance on high-level statements without concrete supporting evidence.",
+        "Corrections made only after prompting and without full justification."
+      ]
+    },
+
+    "LOW": {
+      "required_conditions": [
+        "The majority of evaluated skills rely primarily on ambiguous or minimal evidence.",
+        "Evidence originates predominantly from a single source (only transcript or only code)."
+      ],
+      "signals_increasing_confidence": [
+        "Isolated instances of correct reasoning or implementation."
+      ],
+      "signals_reducing_confidence": [
+        "Repeated contradictions between verbal explanations and code behavior.",
+        "Unresolved errors in core logic with no explicit correction."
+      ]
+    }
+  },
+
+  "forbidden_inferences": [
+    "Personality traits or behavioral characteristics",
+    "Candidate intent, motivation, or effort level",
+    "Educational background or prior experience",
+    "Cultural, linguistic, or communication style assumptions",
+    "Predictions of future job performance beyond observed evidence"
+  ],
+
+  "required_human_review_conditions": [
+    "Overall confidence level is LOW.",
+    "Conflicting signals cannot be resolved deterministically.",
+    "Multiple evaluated skills rely primarily on ambiguous or partial evidence.",
+    "Overall confidence level is MEDIUM and significant uncertainty notes are present."
+  ]
+}
