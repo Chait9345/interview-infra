@@ -1,0 +1,68 @@
+{
+  "candidate_metadata": {
+    "candidate_id": "anon_7f3c9b21",
+    "role": "Software Engineer (Entry + Mid)",
+    "interview_id": "int_2026_01_07_001",
+    "evaluation_timestamp": "2026-01-07T14:05:00Z"
+  },
+  "section_evaluations": {
+    "DSA": {
+      "skills": {
+        "dsa_problem_decomposition": {
+          "score": 6,
+          "evidence_snippets": [
+            "Explained the approach by breaking the problem into steps",
+            "Mentioned handling edge cases verbally"
+          ],
+          "code_evidence": [
+            "Used iterative traversal instead of sorting"
+          ],
+          "uncertainty_notes": "Edge-case handling not fully reflected in code"
+        },
+        "dsa_complexity_awareness": {
+          "score": 6,
+          "evidence_snippets": [
+            "Identified O(n) time complexity",
+            "Avoided unnecessary data structures"
+          ],
+          "code_evidence": [
+            "Single-pass traversal"
+          ],
+          "uncertainty_notes": "Complexity explanation was informal"
+        }
+      }
+    },
+    "Debugging": {
+      "skills": {
+        "debug_error_identification": {
+          "score": 5,
+          "evidence_snippets": [
+            "Identified off-by-one error in loop"
+          ],
+          "code_evidence": [
+            "Adjusted loop boundary"
+          ],
+          "uncertainty_notes": "Focused on one failure scenario"
+        }
+      }
+    },
+    "System Design": {
+      "skills": {
+        "sys_design_component_identification": {
+          "score": 6,
+          "evidence_snippets": [
+            "Outlined API, service layer, and storage"
+          ],
+          "code_evidence": [],
+          "uncertainty_notes": "Trade-offs discussed briefly"
+        }
+      }
+    }
+  },
+  "overall_confidence_band": "MEDIUM",
+  "system_recommendation": "REVIEW_ONLY",
+  "global_uncertainty_notes": [
+    "Some explanations lacked depth",
+    "Limited exploration of alternatives"
+  ]
+}

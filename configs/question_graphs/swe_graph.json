@@ -1,0 +1,112 @@
+{
+  "start_node": "dsa_array_1",
+  "end_node": "sys_design_tradeoff_1",
+  "nodes": {
+    "dsa_array_1": {
+      "section": "dsa",
+      "type": "coding_reasoning",
+      "difficulty": "easy",
+      "prompt_id": "array_traversal_logic",
+      "transitions": {
+        "move_forward": {
+          "then": "dsa_hashing_1"
+        }
+      }
+    },
+    "dsa_hashing_1": {
+      "section": "dsa",
+      "type": "coding_reasoning",
+      "difficulty": "easy",
+      "prompt_id": "hashmap_frequency",
+      "transitions": {
+        "move_forward": {
+          "then": "dsa_recursion_1"
+        }
+      }
+    },
+    "dsa_recursion_1": {
+      "section": "dsa",
+      "type": "conceptual",
+      "difficulty": "medium",
+      "prompt_id": "recursion_stack_reasoning",
+      "transitions": {
+        "move_forward": {
+          "then": "dsa_dp_1"
+        }
+      }
+    },
+    "dsa_dp_1": {
+      "section": "dsa",
+      "type": "conceptual",
+      "difficulty": "medium",
+      "prompt_id": "dynamic_programming_state",
+      "transitions": {
+        "move_forward": {
+          "then": "debug_runtime_1"
+        }
+      }
+    },
+    "debug_runtime_1": {
+      "section": "debugging",
+      "type": "bug_identification",
+      "difficulty": "easy",
+      "prompt_id": "null_pointer_error",
+      "transitions": {
+        "move_forward": {
+          "then": "debug_logic_1"
+        }
+      }
+    },
+    "debug_logic_1": {
+      "section": "debugging",
+      "type": "logic_trace",
+      "difficulty": "medium",
+      "prompt_id": "off_by_one_loop",
+      "transitions": {
+        "move_forward": {
+          "then": "debug_perf_1"
+        }
+      }
+    },
+    "debug_perf_1": {
+      "section": "debugging",
+      "type": "performance_analysis",
+      "difficulty": "medium",
+      "prompt_id": "inefficient_loop",
+      "transitions": {
+        "move_forward": {
+          "then": "sys_design_api_1"
+        }
+      }
+    },
+    "sys_design_api_1": {
+      "section": "system_design",
+      "type": "verbal_design",
+      "difficulty": "easy",
+      "prompt_id": "design_rest_service",
+      "transitions": {
+        "move_forward": {
+          "then": "sys_design_scale_1"
+        }
+      }
+    },
+    "sys_design_scale_1": {
+      "section": "system_design",
+      "type": "verbal_design",
+      "difficulty": "medium",
+      "prompt_id": "scaling_read_heavy",
+      "transitions": {
+        "move_forward": {
+          "then": "sys_design_tradeoff_1"
+        }
+      }
+    },
+    "sys_design_tradeoff_1": {
+      "section": "system_design",
+      "type": "verbal_reasoning",
+      "difficulty": "medium",
+      "prompt_id": "cache_vs_db_tradeoff",
+      "transitions": {}
+    }
+  }
+}

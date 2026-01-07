@@ -1,0 +1,26 @@
+{
+  "role": "Software Engineer",
+  "level": ["Entry", "Mid"],
+  "sections": [
+    {
+      "id": "dsa",
+      "name": "Data Structures and Algorithms",
+      "objective": "Assess core problem-solving, data structures, and algorithmic thinking"
+    },
+    {
+      "id": "debugging",
+      "name": "Debugging",
+      "objective": "Assess ability to reason about incorrect code and identify logical or runtime issues"
+    },
+    {
+      "id": "system_design",
+      "name": "System Design",
+      "objective": "Assess foundational system design reasoning and trade-off thinking"
+    }
+  ],
+  "constraints": {
+    "deterministic": true,
+    "equal_difficulty_exposure": true,
+    "no_randomization": true
+  }
+}
