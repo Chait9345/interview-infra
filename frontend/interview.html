@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Software Engineer Interview</title>
+  <link rel="stylesheet" href="interview.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="avatar"></div>
+      <div class="header-text">
+        <h1>Software Engineer Interview</h1>
+        <div class="status-row">
+          <span class="section" id="section">DSA</span>
+          <span class="timer">⏱ 12:45 (mock)</span>
+          <span class="recording">
+            <span class="dot"></span> AI Interview Recording
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="question-card">
+        <h2>Question</h2>
+        <p id="questionText">
+          Explain how you would find the second largest element in an array.
+        </p>
+      </div>
+
+      <div class="response-card">
+        <h2>Your Response</h2>
+        <textarea placeholder="Type your response here..." disabled></textarea>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <button id="nextBtn">Next Question</button>
+    </footer>
+  </div>
+
+  <script src="interview.js"></script>
+</body>
+</html>
