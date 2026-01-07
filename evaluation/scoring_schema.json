@@ -1,0 +1,69 @@
+{
+  "inputs": {
+    "required": [
+      "interview_transcript",
+      "code_submissions",
+      "rubric_definition"
+    ]
+  },
+
+  "evaluation_constraints": {
+    "deterministic": true,
+    "rule_based": true,
+    "no_auto_rejection": true,
+    "no_personality_inference": true,
+    "no_unobservable_inference": true
+  },
+
+  "skill_scoring_framework": {
+    "evidence_sources": {
+      "transcript": "Candidate verbal explanations, clarifications, reasoning steps, and corrections.",
+      "code": "Submitted code artifacts including structure, correctness, constraints handling, and efficiency."
+    },
+
+    "signal_definitions": {
+      "strong_signal": {
+        "definition": "Clear, explicit, and correct evidence directly satisfying the skill description.",
+        "required_characteristics": [
+          "Evidence is directly tied to the rubric skill description",
+          "Reasoning or implementation is logically sound",
+          "No internal contradictions across transcript or code",
+          "Decisions are explicitly justified"
+        ],
+        "scoring_guidance": "Assign score in the upper half of the skill score_range, proportional to completeness."
+      },
+
+      "weak_signal": {
+        "definition": "Partial or superficial evidence that aligns loosely with the skill description.",
+        "required_characteristics": [
+          "Concepts mentioned without full application",
+          "Implementation works only for limited cases",
+          "Minor logical flaws or missing constraints",
+          "Intent is implied but not demonstrated"
+        ],
+        "scoring_guidance": "Assign score in the lower half of the skill score_range."
+      },
+
+      "ambiguous_signal": {
+        "definition": "Incomplete, conflicting, or unclear evidence that does not conclusively demonstrate the skill.",
+        "handling_rules": [
+          "Do not infer unstated intent",
+          "Evaluate only observable evidence",
+          "If evidence is mixed, prefer conservative interpretation",
+          "Assign midpoint or lower-midpoint of score_range depending on clarity"
+        ]
+      },
+
+      "no_signal": {
+        "definition": "No observable evidence related to the skill.",
+        "scoring_guidance": "Assign the minimum score of the skill score_range."
+      }
+    },
+
+    "conflict_resolution_rules": [
+      "Prefer code evidence over verbal claims when both exist",
+      "Prefer explicitly corrected statements over earlier incorrect ones",
+      "If conflicts remain unresolved, treat evidence as ambiguous"
+    ]
+  }
+}
