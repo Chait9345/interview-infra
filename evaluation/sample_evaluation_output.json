@@ -5,13 +5,19 @@
     "interview_id": "int_2026_01_07_001",
     "evaluation_timestamp": "2026-01-07T14:05:00Z"
   },
+<<<<<<< HEAD
 
   "section_evaluations": {
     "dsa": {
+=======
+  "section_evaluations": {
+    "DSA": {
+>>>>>>> origin/orchestrator-person4
       "skills": {
         "dsa_problem_decomposition": {
           "score": 6,
           "evidence_snippets": [
+<<<<<<< HEAD
             "Explained the approach by breaking the problem into input parsing, core logic, and edge-case handling.",
             "Mentioned handling of empty arrays and single-element cases verbally."
           ],
@@ -20,10 +26,20 @@
             "Core algorithm implemented iteratively."
           ],
           "uncertainty_notes": "Edge-case handling was described verbally but not fully reflected in code."
+=======
+            "Explained the approach by breaking the problem into steps",
+            "Mentioned handling edge cases verbally"
+          ],
+          "code_evidence": [
+            "Used iterative traversal instead of sorting"
+          ],
+          "uncertainty_notes": "Edge-case handling not fully reflected in code"
+>>>>>>> origin/orchestrator-person4
         },
         "dsa_complexity_awareness": {
           "score": 6,
           "evidence_snippets": [
+<<<<<<< HEAD
             "Stated that the solution runs in O(n) time with O(1) extra space.",
             "Acknowledged that alternative approaches would increase space usage."
           ],
@@ -36,10 +52,24 @@
     },
 
     "debugging": {
+=======
+            "Identified O(n) time complexity",
+            "Avoided unnecessary data structures"
+          ],
+          "code_evidence": [
+            "Single-pass traversal"
+          ],
+          "uncertainty_notes": "Complexity explanation was informal"
+        }
+      }
+    },
+    "Debugging": {
+>>>>>>> origin/orchestrator-person4
       "skills": {
         "debug_error_identification": {
           "score": 5,
           "evidence_snippets": [
+<<<<<<< HEAD
             "Identified an off-by-one error as the cause of failing test cases.",
             "Walked through variable values using a concrete example."
           ],
@@ -52,10 +82,23 @@
     },
 
     "system_design": {
+=======
+            "Identified off-by-one error in loop"
+          ],
+          "code_evidence": [
+            "Adjusted loop boundary"
+          ],
+          "uncertainty_notes": "Focused on one failure scenario"
+        }
+      }
+    },
+    "System Design": {
+>>>>>>> origin/orchestrator-person4
       "skills": {
         "sys_design_component_identification": {
           "score": 6,
           "evidence_snippets": [
+<<<<<<< HEAD
             "Outlined a basic service with API layer, business logic, and storage.",
             "Mentioned scaling reads using replication."
           ],
@@ -63,10 +106,17 @@
             "No production-level artifacts; discussion remained conceptual."
           ],
           "uncertainty_notes": "Design trade-offs were mentioned briefly without deep comparative analysis."
+=======
+            "Outlined API, service layer, and storage"
+          ],
+          "code_evidence": [],
+          "uncertainty_notes": "Trade-offs discussed briefly"
+>>>>>>> origin/orchestrator-person4
         }
       }
     }
   },
+<<<<<<< HEAD
 
   "overall_confidence_band": "MEDIUM",
   "system_recommendation": "REVIEW_ONLY",
@@ -74,5 +124,12 @@
   "global_uncertainty_notes": [
     "Some explanations were high-level and lacked concrete validation in code.",
     "Limited interview time prevented deeper exploration of alternative approaches."
+=======
+  "overall_confidence_band": "MEDIUM",
+  "system_recommendation": "REVIEW_ONLY",
+  "global_uncertainty_notes": [
+    "Some explanations lacked depth",
+    "Limited exploration of alternatives"
+>>>>>>> origin/orchestrator-person4
   ]
 }
