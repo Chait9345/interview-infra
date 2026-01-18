@@ -14,11 +14,7 @@
     },
     {
       "id": "system_design",
-<<<<<<< HEAD
-      "name": "System Design (Verbal)",
-=======
       "name": "System Design",
->>>>>>> origin/orchestrator-person4
       "objective": "Assess foundational system design reasoning and trade-off thinking"
     }
   ],
