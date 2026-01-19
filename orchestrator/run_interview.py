@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # ============================================================
 # PERMANENT PYTHON PATH FIX (DO NOT REMOVE)
 # ============================================================
@@ -18,6 +19,13 @@ from interview_runtime.ai_layer.transcription import transcribe_audio
 
 # Project root (used for loading configs)
 BASE_DIR = ROOT_DIR
+=======
+import json
+from pathlib import Path
+
+# Project root
+BASE_DIR = Path(__file__).resolve().parent.parent
+>>>>>>> Stashed changes
 print("BASE_DIR =", BASE_DIR)
 
 
@@ -74,12 +82,17 @@ def simulate_interview(role_config, question_graph):
             print(f"[ERROR] Node '{current_node_id}' not found")
             break
 
+<<<<<<< Updated upstream
         print("\n[QUESTION METADATA]")
+=======
+        print("\n[QUESTION]")
+>>>>>>> Stashed changes
         print(f"Section : {node['section']}")
         print(f"Prompt  : {node['prompt_id']}")
         print(f"Type    : {node['type']}")
         print(f"Level   : {node['difficulty']}")
 
+<<<<<<< Updated upstream
         # ------------------------------------------------
         # AI INTERVIEWER: SPEAK QUESTION
         # ------------------------------------------------
@@ -115,6 +128,8 @@ def simulate_interview(role_config, question_graph):
         # ------------------------------------------------
         # RUNTIME CONTINUES (NO AI LOGIC HERE)
         # ------------------------------------------------
+=======
+>>>>>>> Stashed changes
         transitions = node.get("transitions", {})
         move_forward = transitions.get("move_forward", {})
         next_node = move_forward.get("then")
@@ -139,17 +154,29 @@ def save_final_evaluation(evaluation_data):
 
 
 def main():
+<<<<<<< Updated upstream
     # --- Load role config ---
+=======
+    # --- Load role config (auto-discovered) ---
+>>>>>>> Stashed changes
     roles_dir = BASE_DIR / "configs" / "roles"
     role_file = find_single_json(roles_dir, "roles config")
     role_config = load_json(role_file)
 
+<<<<<<< Updated upstream
     # --- Load question graph ---
+=======
+    # --- Load question graph (auto-discovered) ---
+>>>>>>> Stashed changes
     graphs_dir = BASE_DIR / "configs" / "question_graphs"
     graph_file = find_single_json(graphs_dir, "question graph")
     question_graph = load_json(graph_file)
 
+<<<<<<< Updated upstream
     # --- Run interview ---
+=======
+    # --- Simulate interview ---
+>>>>>>> Stashed changes
     simulate_interview(role_config, question_graph)
 
     # --- Load evaluation output ---

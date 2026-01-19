@@ -5,6 +5,7 @@
     "interview_id": "int_2026_01_07_001",
     "evaluation_timestamp": "2026-01-07T14:05:00Z"
   },
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 
   "section_evaluations": {
@@ -13,10 +14,15 @@
   "section_evaluations": {
     "DSA": {
 >>>>>>> origin/orchestrator-person4
+=======
+  "section_evaluations": {
+    "DSA": {
+>>>>>>> Stashed changes
       "skills": {
         "dsa_problem_decomposition": {
           "score": 6,
           "evidence_snippets": [
+<<<<<<< Updated upstream
 <<<<<<< HEAD
             "Explained the approach by breaking the problem into input parsing, core logic, and edge-case handling.",
             "Mentioned handling of empty arrays and single-element cases verbally."
@@ -27,6 +33,8 @@
           ],
           "uncertainty_notes": "Edge-case handling was described verbally but not fully reflected in code."
 =======
+=======
+>>>>>>> Stashed changes
             "Explained the approach by breaking the problem into steps",
             "Mentioned handling edge cases verbally"
           ],
@@ -34,11 +42,15 @@
             "Used iterative traversal instead of sorting"
           ],
           "uncertainty_notes": "Edge-case handling not fully reflected in code"
+<<<<<<< Updated upstream
 >>>>>>> origin/orchestrator-person4
+=======
+>>>>>>> Stashed changes
         },
         "dsa_complexity_awareness": {
           "score": 6,
           "evidence_snippets": [
+<<<<<<< Updated upstream
 <<<<<<< HEAD
             "Stated that the solution runs in O(n) time with O(1) extra space.",
             "Acknowledged that alternative approaches would increase space usage."
@@ -53,6 +65,8 @@
 
     "debugging": {
 =======
+=======
+>>>>>>> Stashed changes
             "Identified O(n) time complexity",
             "Avoided unnecessary data structures"
           ],
@@ -64,11 +78,15 @@
       }
     },
     "Debugging": {
+<<<<<<< Updated upstream
 >>>>>>> origin/orchestrator-person4
+=======
+>>>>>>> Stashed changes
       "skills": {
         "debug_error_identification": {
           "score": 5,
           "evidence_snippets": [
+<<<<<<< Updated upstream
 <<<<<<< HEAD
             "Identified an off-by-one error as the cause of failing test cases.",
             "Walked through variable values using a concrete example."
@@ -83,6 +101,8 @@
 
     "system_design": {
 =======
+=======
+>>>>>>> Stashed changes
             "Identified off-by-one error in loop"
           ],
           "code_evidence": [
@@ -93,11 +113,15 @@
       }
     },
     "System Design": {
+<<<<<<< Updated upstream
 >>>>>>> origin/orchestrator-person4
+=======
+>>>>>>> Stashed changes
       "skills": {
         "sys_design_component_identification": {
           "score": 6,
           "evidence_snippets": [
+<<<<<<< Updated upstream
 <<<<<<< HEAD
             "Outlined a basic service with API layer, business logic, and storage.",
             "Mentioned scaling reads using replication."
@@ -107,15 +131,21 @@
           ],
           "uncertainty_notes": "Design trade-offs were mentioned briefly without deep comparative analysis."
 =======
+=======
+>>>>>>> Stashed changes
             "Outlined API, service layer, and storage"
           ],
           "code_evidence": [],
           "uncertainty_notes": "Trade-offs discussed briefly"
+<<<<<<< Updated upstream
 >>>>>>> origin/orchestrator-person4
+=======
+>>>>>>> Stashed changes
         }
       }
     }
   },
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 
   "overall_confidence_band": "MEDIUM",
@@ -125,11 +155,16 @@
     "Some explanations were high-level and lacked concrete validation in code.",
     "Limited interview time prevented deeper exploration of alternative approaches."
 =======
+=======
+>>>>>>> Stashed changes
   "overall_confidence_band": "MEDIUM",
   "system_recommendation": "REVIEW_ONLY",
   "global_uncertainty_notes": [
     "Some explanations lacked depth",
     "Limited exploration of alternatives"
+<<<<<<< Updated upstream
 >>>>>>> origin/orchestrator-person4
+=======
+>>>>>>> Stashed changes
   ]
 }

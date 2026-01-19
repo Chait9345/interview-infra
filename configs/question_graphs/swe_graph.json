@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
   
   "versioning": {
     "schema_version": "1.0.0",
@@ -33,12 +34,17 @@
   "start_node": "dsa_array_1",
   "end_node": "sys_design_tradeoff_1",
 
+=======
+  "start_node": "dsa_array_1",
+  "end_node": "sys_design_tradeoff_1",
+>>>>>>> Stashed changes
   "nodes": {
     "dsa_array_1": {
       "section": "dsa",
       "type": "coding_reasoning",
       "difficulty": "easy",
       "prompt_id": "array_traversal_logic",
+<<<<<<< Updated upstream
 
       "success_threshold": 8,
       "partial_threshold": 5,
@@ -81,11 +87,20 @@
       }
     },
 
+=======
+      "transitions": {
+        "move_forward": {
+          "then": "dsa_hashing_1"
+        }
+      }
+    },
+>>>>>>> Stashed changes
     "dsa_hashing_1": {
       "section": "dsa",
       "type": "coding_reasoning",
       "difficulty": "easy",
       "prompt_id": "hashmap_frequency",
+<<<<<<< Updated upstream
 
       "success_threshold": 8,
       "partial_threshold": 5,
@@ -126,11 +141,20 @@
       }
     },
 
+=======
+      "transitions": {
+        "move_forward": {
+          "then": "dsa_recursion_1"
+        }
+      }
+    },
+>>>>>>> Stashed changes
     "dsa_recursion_1": {
       "section": "dsa",
       "type": "conceptual",
       "difficulty": "medium",
       "prompt_id": "recursion_stack_reasoning",
+<<<<<<< Updated upstream
 
       "success_threshold": 7,
       "partial_threshold": 4,
@@ -172,11 +196,20 @@
       }
     },
 
+=======
+      "transitions": {
+        "move_forward": {
+          "then": "dsa_dp_1"
+        }
+      }
+    },
+>>>>>>> Stashed changes
     "dsa_dp_1": {
       "section": "dsa",
       "type": "conceptual",
       "difficulty": "medium",
       "prompt_id": "dynamic_programming_state",
+<<<<<<< Updated upstream
 
       "success_threshold": 7,
       "partial_threshold": 4,
@@ -218,11 +251,20 @@
       }
     },
 
+=======
+      "transitions": {
+        "move_forward": {
+          "then": "debug_runtime_1"
+        }
+      }
+    },
+>>>>>>> Stashed changes
     "debug_runtime_1": {
       "section": "debugging",
       "type": "bug_identification",
       "difficulty": "easy",
       "prompt_id": "null_pointer_error",
+<<<<<<< Updated upstream
 
       "success_threshold": 8,
       "partial_threshold": 5,
@@ -263,11 +305,20 @@
       }
     },
 
+=======
+      "transitions": {
+        "move_forward": {
+          "then": "debug_logic_1"
+        }
+      }
+    },
+>>>>>>> Stashed changes
     "debug_logic_1": {
       "section": "debugging",
       "type": "logic_trace",
       "difficulty": "medium",
       "prompt_id": "off_by_one_loop",
+<<<<<<< Updated upstream
 
       "success_threshold": 7,
       "partial_threshold": 4,
@@ -307,11 +358,20 @@
       }
     },
 
+=======
+      "transitions": {
+        "move_forward": {
+          "then": "debug_perf_1"
+        }
+      }
+    },
+>>>>>>> Stashed changes
     "debug_perf_1": {
       "section": "debugging",
       "type": "performance_analysis",
       "difficulty": "medium",
       "prompt_id": "inefficient_loop",
+<<<<<<< Updated upstream
 
       "success_threshold": 7,
       "partial_threshold": 4,
@@ -351,11 +411,20 @@
       }
     },
 
+=======
+      "transitions": {
+        "move_forward": {
+          "then": "sys_design_api_1"
+        }
+      }
+    },
+>>>>>>> Stashed changes
     "sys_design_api_1": {
       "section": "system_design",
       "type": "verbal_design",
       "difficulty": "easy",
       "prompt_id": "design_rest_service",
+<<<<<<< Updated upstream
 
       "success_threshold": 8,
       "partial_threshold": 5,
@@ -396,11 +465,20 @@
       }
     },
 
+=======
+      "transitions": {
+        "move_forward": {
+          "then": "sys_design_scale_1"
+        }
+      }
+    },
+>>>>>>> Stashed changes
     "sys_design_scale_1": {
       "section": "system_design",
       "type": "verbal_design",
       "difficulty": "medium",
       "prompt_id": "scaling_read_heavy",
+<<<<<<< Updated upstream
 
       "success_threshold": 7,
       "partial_threshold": 4,
@@ -440,11 +518,20 @@
       }
     },
 
+=======
+      "transitions": {
+        "move_forward": {
+          "then": "sys_design_tradeoff_1"
+        }
+      }
+    },
+>>>>>>> Stashed changes
     "sys_design_tradeoff_1": {
       "section": "system_design",
       "type": "verbal_reasoning",
       "difficulty": "medium",
       "prompt_id": "cache_vs_db_tradeoff",
+<<<<<<< Updated upstream
 
       "success_threshold": 7,
       "partial_threshold": 4,
@@ -483,3 +570,9 @@
     }
   }
 }
+=======
+      "transitions": {}
+    }
+  }
+}
+>>>>>>> Stashed changes
