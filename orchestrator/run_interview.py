@@ -1,8 +1,23 @@
-import json
+# ============================================================
+# PERMANENT PYTHON PATH FIX (DO NOT REMOVE)
+# ============================================================
+import sys
 from pathlib import Path
 
-# Project root
-BASE_DIR = Path(__file__).resolve().parent.parent
+ROOT_DIR = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT_DIR))
+
+# ============================================================
+# STANDARD IMPORTS
+# ============================================================
+import json
+
+# --- AI Layer Imports ---
+from interview_runtime.ai_layer.ai_interviewer import render_question
+from interview_runtime.ai_layer.transcription import transcribe_audio
+
+# Project root (used for loading configs)
+BASE_DIR = ROOT_DIR
 print("BASE_DIR =", BASE_DIR)
 
 
@@ -59,12 +74,47 @@ def simulate_interview(role_config, question_graph):
             print(f"[ERROR] Node '{current_node_id}' not found")
             break
 
-        print("\n[QUESTION]")
+        print("\n[QUESTION METADATA]")
         print(f"Section : {node['section']}")
         print(f"Prompt  : {node['prompt_id']}")
         print(f"Type    : {node['type']}")
         print(f"Level   : {node['difficulty']}")
 
+        # ------------------------------------------------
+        # AI INTERVIEWER: SPEAK QUESTION
+        # ------------------------------------------------
+        ai_output = render_question(
+            question_id=current_node_id,
+            question_text=node["prompt_id"],
+            allowed_template_ids=["F1"],
+            followup_policy={
+                "enabled": True,
+                "max_followups": 1
+            }
+        )
+
+        print("\n[AI SPEAKS]")
+        print(ai_output["spoken_question_audio"])
+
+        # ------------------------------------------------
+        # SIMULATE CANDIDATE SPEECH
+        # ------------------------------------------------
+        candidate_input = input("\nCandidate says: ")
+        candidate_audio = f"[AUDIO] {candidate_input}"
+
+        # ------------------------------------------------
+        # AI TRANSCRIPTION
+        # ------------------------------------------------
+        transcript = transcribe_audio(candidate_audio)
+
+        print("\n[TRANSCRIPTION]")
+        print("Text      :", transcript["transcript_text"])
+        print("Confidence:", transcript["confidence"])
+        print("Flags     :", transcript["flags"])
+
+        # ------------------------------------------------
+        # RUNTIME CONTINUES (NO AI LOGIC HERE)
+        # ------------------------------------------------
         transitions = node.get("transitions", {})
         move_forward = transitions.get("move_forward", {})
         next_node = move_forward.get("then")
@@ -89,17 +139,17 @@ def save_final_evaluation(evaluation_data):
 
 
 def main():
-    # --- Load role config (auto-discovered) ---
+    # --- Load role config ---
     roles_dir = BASE_DIR / "configs" / "roles"
     role_file = find_single_json(roles_dir, "roles config")
     role_config = load_json(role_file)
 
-    # --- Load question graph (auto-discovered) ---
+    # --- Load question graph ---
     graphs_dir = BASE_DIR / "configs" / "question_graphs"
     graph_file = find_single_json(graphs_dir, "question graph")
     question_graph = load_json(graph_file)
 
-    # --- Simulate interview ---
+    # --- Run interview ---
     simulate_interview(role_config, question_graph)
 
     # --- Load evaluation output ---
