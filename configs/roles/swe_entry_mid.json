@@ -1,27 +1,111 @@
 {
+  "versioning": {
+    "schema_version": "1.0.0",
+    "config_version": "1.1.0",
+    "status": "active",
+    "parent_version": "1.0.0",
+    "created_at": "2026-01-19T10:30:00Z",
+    "change_summary": "Added governance rules for probe limits and unsafe signal restrictions",
+    "compatible_with": ["1.0.x"]
+  },
   "role": "Software Engineer",
   "level": ["Entry", "Mid"],
+
   "sections": [
     {
-      "id": "dsa",
+      "section_id": "dsa",
       "name": "Data Structures and Algorithms",
       "objective": "Assess core problem-solving, data structures, and algorithmic thinking"
     },
     {
-      "id": "debugging",
+      "section_id": "debugging",
       "name": "Debugging",
       "objective": "Assess ability to reason about incorrect code and identify logical or runtime issues"
     },
     {
-      "id": "system_design",
-<<<<<<< HEAD
+      "section_id": "system_design",
       "name": "System Design (Verbal)",
-=======
-      "name": "System Design",
->>>>>>> origin/orchestrator-person4
       "objective": "Assess foundational system design reasoning and trade-off thinking"
     }
   ],
+
+  "governance": {
+    "determinism": {
+      "allow_randomization": false,
+      "allow_dynamic_reordering": false
+    },
+
+    "difficulty_exposure": {
+      "required_per_section": {
+        "easy": 1,
+        "medium": 1
+      },
+      "max_repeats_per_node": 2,
+      "allow_difficulty_skip": false
+    },
+
+    "follow_up_constraints": {
+      "max_probe_depth_per_node": 1,
+      "probe_only_on": [
+        "reasoning_clear == true"
+      ],
+      "forbidden_probe_triggers": [
+        "silence_seconds",
+        "confidence_level",
+        "speaking_speed"
+      ]
+    },
+
+    "unsafe_signals": {
+      "forbidden_signals": [
+        "emotion_inference",
+        "accent_analysis",
+        "personality_traits",
+        "sentiment_score"
+      ],
+      "allowed_signals": [
+        "explicit_answer_content",
+        "reasoning_steps",
+        "stated_complexity"
+      ]
+    },
+
+    "human_review_required_if": [
+      "difficulty_exposure_violation",
+      "probe_depth_exceeded",
+      "ambiguous_transition_resolution"
+    ]
+  },
+  "audit_contract": {
+  "audit_level": "full",
+
+  "required_interview_metadata": [
+    "interview_id",
+    "role_config_version",
+    "graph_config_version",
+    "started_at",
+    "completed_at",
+    "final_state"
+  ],
+
+  "required_trace_fields": [
+    "node_id",
+    "section",
+    "difficulty",
+    "transition_taken",
+    "governance_applied",
+    "exit_reason"
+  ],
+
+  "required_governance_events": [
+    "probe_depth_exceeded",
+    "difficulty_exposure_violation",
+    "ambiguous_transition_resolution",
+    "early_termination"
+  ],
+
+  "human_review_mandatory_if_any_event": true
+  },
   "constraints": {
     "deterministic": true,
     "equal_difficulty_exposure": true,

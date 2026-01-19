@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Interview Rubric Definition Language (RDL)",
+  "type": "object",
+  "required": ["versioning", "role", "sections"],
+  "properties": {
+    "versioning": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "rubric_version",
+        "status",
+        "created_at",
+        "compatible_with"
+      ],
+      "properties": {
+        "schema_version": { "type": "string" },
+        "rubric_version": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["draft", "active", "deprecated"]
+        },
+        "parent_version": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "change_summary": { "type": "string" },
+        "compatible_with": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+
+    "role": { "type": "string" },
+
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["section_id", "skills"],
+        "properties": {
+          "section_id": { "type": "string" },
+
+          "skills": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "skill_id",
+                "description",
+                "score_scale",
+                "allowed_evidence",
+                "forbidden_signals",
+                "scoring_anchors"
+              ],
+              "properties": {
+                "skill_id": { "type": "string" },
+
+                "description": { "type": "string" },
+
+                "score_scale": {
+                  "type": "object",
+                  "required": ["min", "max"],
+                  "properties": {
+                    "min": { "type": "integer" },
+                    "max": { "type": "integer" }
+                  }
+                },
+
+                "allowed_evidence": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+
+                "forbidden_signals": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+
+                "scoring_anchors": {
+                  "type": "object",
+                  "required": ["low", "medium", "high"],
+                  "properties": {
+                    "low": { "type": "string" },
+                    "medium": { "type": "string" },
+                    "high": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

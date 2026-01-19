@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["start_node", "end_node", "nodes"],
+  "properties": {
+    "start_node": { "type": "string" },
+    "end_node": { "type": "string" },
+    "nodes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "section",
+          "type",
+          "difficulty",
+          "prompt_id",
+          "success_threshold",
+          "partial_threshold",
+          "failure_threshold",
+          "transitions"
+        ],
+        "properties": {
+          "section": { "type": "string" },
+          "type": { "type": "string" },
+          "difficulty": {
+            "type": "string",
+            "enum": ["easy", "medium", "hard"]
+          },
+          "prompt_id": { "type": "string" },
+          "success_threshold": { "type": "number" },
+          "partial_threshold": { "type": "number" },
+          "failure_threshold": { "type": "number" },
+          "transitions": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "required": ["then"],
+              "properties": {
+                "if": { "type": "string" },
+                "then": { "type": "string" }
+              }
+            }
+          },
+          "edge_cases": {
+            "type": "object",
+            "additionalProperties": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["role", "level", "sections"],
+  "properties": {
+    "role": { "type": "string" },
+    "level": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["section_id", "name", "description", "skills"],
+        "properties": {
+          "section_id": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "skills": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "skill_id",
+                "description",
+                "score_range",
+                "required_evidence",
+                "explicitly_disallowed_evidence"
+              ],
+              "properties": {
+                "skill_id": { "type": "string" },
+                "description": { "type": "string" },
+                "score_range": { "type": "string" },
+                "required_evidence": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "explicitly_disallowed_evidence": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

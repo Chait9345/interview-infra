@@ -1,4 +1,13 @@
 {
+  "versioning": {
+    "schema_version": "1.0.0",
+    "rubric_version": "1.1.0",
+    "status": "active",
+    "parent_version": "1.0.0",
+    "created_at": "2026-01-19T12:00:00Z",
+    "change_summary": "Formalized evidence-based scoring and forbidden signal constraints",
+    "compatible_with": ["1.0.x"]
+  },
   "role": "Software Engineer",
   "level": ["Entry", "Mid"],
   "sections": [
@@ -180,4 +189,5 @@
       ]
     }
   ]
+  
 }
