@@ -1,180 +1,170 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import DroidAvatar from "@/components/DroidAvatar";
-import SiriWave from "@/components/SiriWave";
 import CameraFeed from "@/components/CameraFeed";
-
-type AIMode = "idle" | "listening" | "speaking" | "thinking";
+import AudioVisualizer from "@/components/AudioVisualizer";
+import TranscriptConsole from "@/components/TranscriptConsole";
+import VoiceWaveform from "@/components/VoiceWaveform";
+import CyberTimer from "@/components/CyberTimer";
+import NeuralBackground from "@/components/NeuralBackground";
+import { useMicrophone } from "../hooks/mic-logic";
 
 export default function Home() {
-  const [aiMode, setAiMode] = useState<AIMode>("idle");
+  const [aiMode, setAiMode] = useState<"idle" | "listening" | "speaking" | "thinking">("idle");
   const [isRunning, setIsRunning] = useState(false);
-  const [latency, setLatency] = useState<number>(0);
-  const [connection, setConnection] = useState<"ONLINE" | "OFFLINE">("OFFLINE");
+  const [transcript, setTranscript] = useState<string[]>([]);
+  const [thinkingProgress, setThinkingProgress] = useState(0);
 
-  // Simulate latency updates
+  // Connect to our newly named mic logic file
+  const { volume, error: micError } = useMicrophone(isRunning && aiMode === "listening");
+
+  // Logic to simulate AI "Thinking" state
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (isRunning) {
-        setLatency(Math.floor(Math.random() * 50) + 10);
-        setConnection("ONLINE");
-      } else {
-        setLatency(0);
-        setConnection("OFFLINE");
-      }
-    }, 1000);
+    let interval: NodeJS.Timeout;
+    if (aiMode === "thinking") {
+      setThinkingProgress(0);
+      interval = setInterval(() => {
+        setThinkingProgress((prev) => {
+          if (prev >= 100) {
+            setAiMode("speaking");
+            return 100;
+          }
+          return prev + 2;
+        });
+      }, 40);
+    }
     return () => clearInterval(interval);
-  }, [isRunning]);
+  }, [aiMode]);
 
   const toggleAI = () => {
-    if (!isRunning) {
-      setIsRunning(true);
-      setAiMode("listening");
-    } else {
+    if (isRunning) {
       setIsRunning(false);
       setAiMode("idle");
+      setTranscript([]);
+    } else {
+      setIsRunning(true);
+      setAiMode("listening");
     }
   };
 
-  // Auto-cycle states for demo
-  useEffect(() => {
-    if (!isRunning) return;
-    const cycle = setInterval(() => {
-      setAiMode((prev) => {
-        if (prev === "listening") return "thinking";
-        if (prev === "thinking") return "speaking";
-        if (prev === "speaking") return "listening";
-        return "idle";
-      });
-    }, 3000);
-    return () => clearInterval(cycle);
-  }, [isRunning]);
-
   return (
-    <main className="h-screen w-screen overflow-hidden bg-[#050505] text-[#00f0ff] font-mono relative">
-      {/* Background Grid Decoration */}
-      <div className="absolute inset-0 pointer-events-none opacity-20" 
-           style={{ 
-             backgroundImage: 'linear-gradient(rgba(0, 240, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.1) 1px, transparent 1px)', 
-             backgroundSize: '40px 40px' 
-           }} 
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#050505] pointer-events-none" />
-
-      {/* Main Layout Grid */}
-      <div className="relative z-10 h-full grid grid-cols-[350px_1fr] gap-6 p-6">
+    <main className="h-screen w-screen overflow-hidden bg-[#020617] text-[#00f5d4] font-mono relative p-6 select-none">
+      {/* LAYER 0: Interactive Neural Background */}
+      <NeuralBackground />
+      
+      {/* LAYER 1: Cyber Grid Overlay */}
+      <div className="absolute inset-0 cyber-grid opacity-20 pointer-events-none z-0" />
+      
+      <div className="relative z-10 h-full grid grid-cols-[400px_1fr] gap-6">
         
-        {/* --- LEFT SIDEBAR (USER CONSOLE) --- */}
-        <div className="flex flex-col gap-4 h-full">
-          
-          {/* 1. Camera Feed Widget (Reduced Size) */}
-          <div className="relative bg-black/40 border border-[#00f0ff]/30 p-1 rounded-lg shadow-[0_0_15px_rgba(0,240,255,0.1)] backdrop-blur-sm overflow-hidden group">
-            {/* Header Line */}
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#00f0ff] to-transparent opacity-50" />
-            
-            <div className="aspect-video w-full rounded border border-[#00f0ff]/10 relative overflow-hidden bg-black">
+        {/* LEFT SIDEBAR: BIOMETRICS & CAMERA */}
+        <aside className="flex flex-col gap-4">
+          {/* Module: Video Feed */}
+          <div className="bg-black/60 border border-[#00f5d4]/30 p-1 rounded-xl backdrop-blur-md shadow-[0_0_20px_rgba(0,245,212,0.1)]">
+            <div className="aspect-video w-full bg-slate-900 rounded-lg overflow-hidden relative border border-white/5">
               <CameraFeed />
-              {/* Corner Accents */}
-              <div className="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-[#00f0ff]/50" />
-              <div className="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-[#00f0ff]/50" />
-              <div className="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-[#00f0ff]/50" />
-              <div className="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-[#00f0ff]/50" />
+              <div className="absolute top-3 left-3 flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-red-600 animate-pulse shadow-[0_0_10px_#dc2626]" />
+                <span className="text-[9px] text-white/70 tracking-[0.2em] font-bold">LIVE_FEED_01</span>
+              </div>
             </div>
-
-            <div className="mt-2 flex justify-between items-center px-2 text-[10px] opacity-70">
-              <span>SOURCE: USER_FEED_01</span>
-              <span className={connection === "ONLINE" ? "text-green-400" : "text-red-400"}>
-                ● {connection}
-              </span>
+            <div className="p-4 flex justify-between items-center text-[10px]">
+              <span className="opacity-40 uppercase">Encrypted</span>
+              <span className="text-cyan-400 font-bold tracking-widest">AES-256-BIT</span>
             </div>
           </div>
 
-          {/* 2. Audio Analysis Widget (Decorative) */}
-          <div className="flex-1 bg-black/40 border border-[#00f0ff]/20 rounded-lg p-4 flex flex-col gap-2 relative overflow-hidden">
-             <div className="text-xs tracking-widest opacity-60 mb-2">AUDIO SPECTRUM ANALYSIS</div>
-             {/* Fake Bars Animation */}
-             <div className="flex items-end justify-between h-32 gap-1 opacity-80">
-                {[...Array(12)].map((_, i) => (
-                   <div 
-                     key={i} 
-                     className="w-full bg-[#00f0ff]/20 animate-pulse rounded-t-sm"
-                     style={{ 
-                       height: `${Math.random() * 80 + 20}%`,
-                       animationDuration: `${Math.random() * 1 + 0.5}s`
-                     }} 
-                   />
-                ))}
+          {/* Module: Voice Analysis */}
+          <div className="flex-1 bg-black/60 border border-[#00f5d4]/20 rounded-xl p-6 flex flex-col backdrop-blur-md">
+            <h3 className="text-[10px] tracking-[0.4em] opacity-40 mb-10 font-black uppercase">Vocal_Analysis</h3>
+            
+            <div className="flex-1 flex flex-col justify-center">
+              <AudioVisualizer isActive={isRunning && aiMode === "listening"} volume={volume} />
+            </div>
+
+            <div className="mt-auto space-y-4 pt-6 border-t border-white/5">
+               <div className="flex justify-between text-[10px] font-bold">
+                  <span className="opacity-40">INPUT_GAIN</span>
+                  <span className="text-cyan-400">{Math.round(volume)}%</span>
+               </div>
+               <div className="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+                  <motion.div 
+                    className="h-full bg-[#00f5d4]" 
+                    animate={{ width: `${Math.min(volume, 100)}%` }} 
+                  />
+               </div>
+            </div>
+          </div>
+        </aside>
+
+        {/* CENTER STAGE: AI INTERVIEWER */}
+        <section className="border border-[#00f5d4]/20 rounded-3xl bg-black/40 backdrop-blur-xl flex flex-col relative overflow-hidden">
+          {/* Visual Scanline */}
+          <div className="scanline pointer-events-none" />
+          
+          {/* Header UI: Transcript & Timer */}
+          <div className="absolute top-8 left-10 right-10 flex justify-between items-start z-30">
+            <div className="max-w-[65%]">
+              <TranscriptConsole transcript={transcript} isActive={aiMode === "listening"} />
+            </div>
+            <CyberTimer isRunning={isRunning} />
+          </div>
+
+          {/* Center: Droid Avatar */}
+          <div className="flex-1 flex flex-col items-center justify-center relative">
+            <DroidAvatar state={aiMode} volume={volume} />
+            
+            {/* Thinking Progress Bar */}
+            <AnimatePresence>
+              {aiMode === "thinking" && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute bottom-24 flex flex-col items-center gap-2"
+                >
+                  <span className="text-[9px] tracking-[0.6em] text-purple-400 animate-pulse font-bold">NEURAL_PROCESSING...</span>
+                  <div className="w-40 h-1 bg-white/10 rounded-full overflow-hidden">
+                    <motion.div 
+                      className="h-full bg-purple-500"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${thinkingProgress}%` }}
+                    />
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Footer UI: Waveform & Technical Metadata */}
+          <div className="h-40 flex flex-col items-center justify-center relative">
+             <VoiceWaveform volume={volume} isActive={isRunning && aiMode === "listening"} />
+             <div className="absolute bottom-6 w-full px-12 flex justify-between items-center text-[8px] tracking-[0.5em] font-bold opacity-20">
+                <span>INTEL_PROC_V.9</span>
+                <div className="flex gap-8">
+                  <span>SSL_SECURE</span>
+                  <span>LATENCY: 12ms</span>
+                </div>
              </div>
-             
-             {/* System Text Block */}
-             <div className="mt-auto space-y-1 text-[10px] text-[#00f0ff]/50 font-mono leading-tight">
-                <p>{`> SYSTEM_CHECK: COMPLETED`}</p>
-                <p>{`> ENCRYPTION: AES-256`}</p>
-                <p>{`> PACKET_LOSS: 0.00%`}</p>
-                <p className="animate-pulse">{`> AWAITING_INPUT...`}</p>
-             </div>
           </div>
-
-        </div>
-
-        {/* --- RIGHT MAIN STAGE (AI AVATAR) --- */}
-        <div className="relative flex flex-col border border-[#00f0ff]/10 rounded-2xl bg-[#00f0ff]/5 backdrop-blur-sm overflow-hidden">
-          {/* Decorative Top Bar */}
-          <div className="absolute top-0 inset-x-0 h-12 bg-gradient-to-b from-[#00f0ff]/10 to-transparent flex items-center justify-between px-6 border-b border-[#00f0ff]/10">
-             <span className="text-xs tracking-[0.2em] opacity-50">INTERVIEW_CORE_V2.1</span>
-             <div className="flex gap-2">
-                <div className="w-2 h-2 rounded-full bg-[#00f0ff]/30" />
-                <div className="w-2 h-2 rounded-full bg-[#00f0ff]/30" />
-                <div className="w-2 h-2 rounded-full bg-[#00f0ff]" />
-             </div>
-          </div>
-
-          {/* Avatar Center */}
-          <div className="flex-1 flex items-center justify-center relative">
-             {/* Glowing Orbit Effect behind avatar */}
-             <div className="absolute w-[500px] h-[500px] bg-[#00f0ff]/5 rounded-full blur-3xl animate-pulse" />
-             <DroidAvatar state={aiMode} />
-          </div>
-
-          {/* Waveform Bottom */}
-          <div className="h-48 w-full relative">
-             <div className="absolute inset-0 bg-gradient-to-t from-[#050505] to-transparent z-10" />
-             <SiriWave status={aiMode} />
-          </div>
-
-        </div>
-
+        </section>
       </div>
 
-      {/* --- FOOTER CONTROLS --- */}
-      <footer className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-6 bg-black/80 backdrop-blur-md border border-[#00f0ff]/30 px-8 py-3 rounded-full shadow-[0_0_30px_rgba(0,240,255,0.15)]">
-        <div className="flex items-center gap-4 text-xs">
-           <div className="flex flex-col items-end">
-              <span className="opacity-50 text-[10px]">STATUS</span>
-              <span className={isRunning ? "text-green-400" : "text-gray-500"}>{aiMode.toUpperCase()}</span>
-           </div>
-           <div className="h-6 w-[1px] bg-[#00f0ff]/30" />
-           <div className="flex flex-col">
-              <span className="opacity-50 text-[10px]">LATENCY</span>
-              <span>{latency}ms</span>
-           </div>
-        </div>
-
+      {/* FLOATING ACTION BUTTON */}
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-50">
         <button
           onClick={toggleAI}
-          className={`
-            px-8 py-2 rounded-full font-bold tracking-wider transition-all duration-300
-            ${isRunning 
-               ? "bg-red-500/20 text-red-400 border border-red-500/50 hover:bg-red-500/30" 
-               : "bg-[#00f0ff]/20 text-[#00f0ff] border border-[#00f0ff]/50 hover:bg-[#00f0ff]/30 hover:shadow-[0_0_20px_rgba(0,240,255,0.4)]"
-            }
-          `}
+          className={`group px-20 py-5 rounded-full font-black tracking-[0.8em] transition-all duration-500 border-2 ${
+            isRunning 
+            ? "bg-red-500/10 text-red-500 border-red-500 shadow-[0_0_40px_rgba(239,68,68,0.2)]" 
+            : "bg-[#00f5d4]/10 text-[#00f5d4] border-[#00f5d4] shadow-[0_0_40px_rgba(0,245,212,0.2)]"
+          } hover:scale-105 active:scale-95`}
         >
-          {isRunning ? "TERMINATE" : "INITIALIZE"}
+          <span className="relative z-10">{isRunning ? "TERMINATE" : "INITIALIZE"}</span>
         </button>
-      </footer>
-
+      </div>
     </main>
   );
 }
