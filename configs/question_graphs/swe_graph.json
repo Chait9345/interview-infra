@@ -1,578 +1,123 @@
 {
-<<<<<<< Updated upstream
-  
   "versioning": {
     "schema_version": "1.0.0",
-    "config_version": "1.1.0",
+    "config_version": "1.1.1",
     "status": "active",
-    "parent_version": "1.0.0",
-    "created_at": "2026-01-19T10:35:00Z",
-    "change_summary": "Introduced node-level governance constraints without altering transitions",
+    "created_at": "2026-01-21T18:30:00Z",
+    "change_summary": "Clean graph with valid skill_id mapping for evaluation engine",
     "compatible_with": ["1.0.x"]
   },
-  "replay_contract": {
-  "replay_mode": "deterministic",
 
-  "inputs_required_for_replay": [
-    "role_config_version",
-    "graph_config_version",
-    "candidate_responses"
-  ],
-
-  "guarantees": {
-    "no_randomness": true,
-    "no_dynamic_reordering": true,
-    "no_hidden_state": true
-  },
-
-  "replay_assertions": [
-    "same_inputs_produce_same_path",
-    "same_transitions_evaluated",
-    "same_final_state"
-  ]
-},
   "start_node": "dsa_array_1",
   "end_node": "sys_design_tradeoff_1",
 
-=======
-  "start_node": "dsa_array_1",
-  "end_node": "sys_design_tradeoff_1",
->>>>>>> Stashed changes
   "nodes": {
     "dsa_array_1": {
       "section": "dsa",
+      "skill_id": "dsa_problem_decomposition",
       "type": "coding_reasoning",
       "difficulty": "easy",
       "prompt_id": "array_traversal_logic",
-<<<<<<< Updated upstream
-
-      "success_threshold": 8,
-      "partial_threshold": 5,
-      "failure_threshold": 0,
-
       "transitions": {
-        "probe_deeper": {
-          "if": "score >= 8 AND reasoning_clear == true",
-          "then": "PROBE_SAME_NODE_DEEPER"
-        },
-        "downgrade_difficulty": {
-          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
-          "then": "dsa_array_1"
-        },
-        "move_forward": {
-          "if": "score >= 5 AND score < 8",
-          "then": "dsa_hashing_1"
-        }
-      },
-
-      "edge_cases": {
-        "silence_over_10s": "downgrade_difficulty",
-        "guessing_without_reasoning": "downgrade_difficulty",
-        "incomplete_answer": "move_forward"
-      },
-
-      "governance": {
-        "allow_probe": true,
-        "max_probe_depth": 1,
-        "counts_toward_difficulty_exposure": true,
-        "forbidden_transition_reasons": [
-          "confidence_estimation",
-          "emotion_inference",
-          "speech_fluency"
-        ],
-        "requires_human_review_if": [
-          "probe_depth_exceeded",
-          "ambiguous_transition_resolution"
-        ]
+        "move_forward": { "then": "dsa_hashing_1" }
       }
     },
 
-=======
-      "transitions": {
-        "move_forward": {
-          "then": "dsa_hashing_1"
-        }
-      }
-    },
->>>>>>> Stashed changes
     "dsa_hashing_1": {
       "section": "dsa",
+      "skill_id": "dsa_problem_decomposition",
       "type": "coding_reasoning",
       "difficulty": "easy",
       "prompt_id": "hashmap_frequency",
-<<<<<<< Updated upstream
-
-      "success_threshold": 8,
-      "partial_threshold": 5,
-      "failure_threshold": 0,
-
       "transitions": {
-        "probe_deeper": {
-          "if": "score >= 8 AND reasoning_clear == true",
-          "then": "PROBE_SAME_NODE_DEEPER"
-        },
-        "downgrade_difficulty": {
-          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
-          "then": "dsa_array_1"
-        },
-        "move_forward": {
-          "if": "score >= 5",
-          "then": "dsa_recursion_1"
-        }
-      },
-
-      "edge_cases": {
-        "silence_over_10s": "downgrade_difficulty",
-        "guessing_without_reasoning": "downgrade_difficulty",
-        "partial_correct": "move_forward"
-      },
-
-      "governance": {
-        "allow_probe": true,
-        "max_probe_depth": 1,
-        "counts_toward_difficulty_exposure": true,
-        "forbidden_transition_reasons": [
-          "confidence_estimation",
-          "accent_analysis"
-        ],
-        "requires_human_review_if": [
-          "difficulty_exposure_violation"
-        ]
+        "move_forward": { "then": "dsa_recursion_1" }
       }
     },
 
-=======
-      "transitions": {
-        "move_forward": {
-          "then": "dsa_recursion_1"
-        }
-      }
-    },
->>>>>>> Stashed changes
     "dsa_recursion_1": {
       "section": "dsa",
+      "skill_id": "dsa_problem_decomposition",
       "type": "conceptual",
       "difficulty": "medium",
       "prompt_id": "recursion_stack_reasoning",
-<<<<<<< Updated upstream
-
-      "success_threshold": 7,
-      "partial_threshold": 4,
-      "failure_threshold": 0,
-
       "transitions": {
-        "probe_deeper": {
-          "if": "score >= 7 AND reasoning_clear == true",
-          "then": "PROBE_SAME_NODE_DEEPER"
-        },
-        "downgrade_difficulty": {
-          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
-          "then": "dsa_hashing_1"
-        },
-        "move_forward": {
-          "if": "score >= 4",
-          "then": "dsa_dp_1"
-        }
-      },
-
-      "edge_cases": {
-        "silence_over_10s": "downgrade_difficulty",
-        "guessing_without_reasoning": "downgrade_difficulty",
-        "incomplete_answer": "move_forward"
-      },
-
-      "governance": {
-        "allow_probe": true,
-        "max_probe_depth": 1,
-        "counts_toward_difficulty_exposure": true,
-        "forbidden_transition_reasons": [
-          "emotion_inference",
-          "sentiment_score"
-        ],
-        "requires_human_review_if": [
-          "probe_depth_exceeded",
-          "difficulty_exposure_violation"
-        ]
+        "move_forward": { "then": "dsa_dp_1" }
       }
     },
 
-=======
-      "transitions": {
-        "move_forward": {
-          "then": "dsa_dp_1"
-        }
-      }
-    },
->>>>>>> Stashed changes
     "dsa_dp_1": {
       "section": "dsa",
+      "skill_id": "dsa_complexity_awareness",
       "type": "conceptual",
       "difficulty": "medium",
       "prompt_id": "dynamic_programming_state",
-<<<<<<< Updated upstream
-
-      "success_threshold": 7,
-      "partial_threshold": 4,
-      "failure_threshold": 0,
-
       "transitions": {
-        "probe_deeper": {
-          "if": "score >= 7 AND reasoning_clear == true",
-          "then": "PROBE_SAME_NODE_DEEPER"
-        },
-        "downgrade_difficulty": {
-          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
-          "then": "dsa_recursion_1"
-        },
-        "move_forward": {
-          "if": "score >= 4",
-          "then": "debug_runtime_1"
-        }
-      },
-
-      "edge_cases": {
-        "silence_over_10s": "downgrade_difficulty",
-        "guessing_without_reasoning": "downgrade_difficulty",
-        "partial_correct": "move_forward"
-      },
-
-      "governance": {
-        "allow_probe": true,
-        "max_probe_depth": 1,
-        "counts_toward_difficulty_exposure": true,
-        "forbidden_transition_reasons": [
-          "emotion_inference",
-          "sentiment_score"
-        ],
-        "requires_human_review_if": [
-          "probe_depth_exceeded",
-          "difficulty_exposure_violation"
-        ]
+        "move_forward": { "then": "debug_runtime_1" }
       }
     },
 
-=======
-      "transitions": {
-        "move_forward": {
-          "then": "debug_runtime_1"
-        }
-      }
-    },
->>>>>>> Stashed changes
     "debug_runtime_1": {
       "section": "debugging",
+      "skill_id": "debug_error_identification",
       "type": "bug_identification",
       "difficulty": "easy",
       "prompt_id": "null_pointer_error",
-<<<<<<< Updated upstream
-
-      "success_threshold": 8,
-      "partial_threshold": 5,
-      "failure_threshold": 0,
-
       "transitions": {
-        "probe_deeper": {
-          "if": "score >= 8 AND reasoning_clear == true",
-          "then": "PROBE_SAME_NODE_DEEPER"
-        },
-        "downgrade_difficulty": {
-          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
-          "then": "dsa_dp_1"
-        },
-        "move_forward": {
-          "if": "score >= 5",
-          "then": "debug_logic_1"
-        }
-      },
-
-      "edge_cases": {
-        "silence_over_10s": "downgrade_difficulty",
-        "guessing_without_reasoning": "downgrade_difficulty",
-        "incomplete_answer": "move_forward"
-      },
-
-      "governance": {
-        "allow_probe": true,
-        "max_probe_depth": 1,
-        "counts_toward_difficulty_exposure": true,
-        "forbidden_transition_reasons": [
-          "confidence_estimation",
-          "emotion_inference"
-        ],
-        "requires_human_review_if": [
-          "probe_depth_exceeded"
-        ]
+        "move_forward": { "then": "debug_logic_1" }
       }
     },
 
-=======
-      "transitions": {
-        "move_forward": {
-          "then": "debug_logic_1"
-        }
-      }
-    },
->>>>>>> Stashed changes
     "debug_logic_1": {
       "section": "debugging",
+      "skill_id": "debug_error_identification",
       "type": "logic_trace",
       "difficulty": "medium",
       "prompt_id": "off_by_one_loop",
-<<<<<<< Updated upstream
-
-      "success_threshold": 7,
-      "partial_threshold": 4,
-      "failure_threshold": 0,
-
       "transitions": {
-        "probe_deeper": {
-          "if": "score >= 7 AND reasoning_clear == true",
-          "then": "PROBE_SAME_NODE_DEEPER"
-        },
-        "downgrade_difficulty": {
-          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
-          "then": "debug_runtime_1"
-        },
-        "move_forward": {
-          "if": "score >= 4",
-          "then": "debug_perf_1"
-        }
-      },
-
-      "edge_cases": {
-        "silence_over_10s": "downgrade_difficulty",
-        "guessing_without_reasoning": "downgrade_difficulty",
-        "partial_correct": "move_forward"
-      },
-
-      "governance": {
-        "allow_probe": true,
-        "max_probe_depth": 1,
-        "counts_toward_difficulty_exposure": true,
-        "forbidden_transition_reasons": [
-          "emotion_inference"
-        ],
-        "requires_human_review_if": [
-          "probe_depth_exceeded"
-        ]
+        "move_forward": { "then": "debug_perf_1" }
       }
     },
 
-=======
-      "transitions": {
-        "move_forward": {
-          "then": "debug_perf_1"
-        }
-      }
-    },
->>>>>>> Stashed changes
     "debug_perf_1": {
       "section": "debugging",
+      "skill_id": "debug_error_identification",
       "type": "performance_analysis",
       "difficulty": "medium",
       "prompt_id": "inefficient_loop",
-<<<<<<< Updated upstream
-
-      "success_threshold": 7,
-      "partial_threshold": 4,
-      "failure_threshold": 0,
-
       "transitions": {
-        "probe_deeper": {
-          "if": "score >= 7 AND reasoning_clear == true",
-          "then": "PROBE_SAME_NODE_DEEPER"
-        },
-        "downgrade_difficulty": {
-          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
-          "then": "debug_logic_1"
-        },
-        "move_forward": {
-          "if": "score >= 4",
-          "then": "sys_design_api_1"
-        }
-      },
-
-      "edge_cases": {
-        "silence_over_10s": "downgrade_difficulty",
-        "guessing_without_reasoning": "downgrade_difficulty",
-        "incomplete_answer": "move_forward"
-      },
-
-      "governance": {
-        "allow_probe": true,
-        "max_probe_depth": 1,
-        "counts_toward_difficulty_exposure": true,
-        "forbidden_transition_reasons": [
-          "emotion_inference"
-        ],
-        "requires_human_review_if": [
-          "probe_depth_exceeded"
-        ]
+        "move_forward": { "then": "sys_design_api_1" }
       }
     },
 
-=======
-      "transitions": {
-        "move_forward": {
-          "then": "sys_design_api_1"
-        }
-      }
-    },
->>>>>>> Stashed changes
     "sys_design_api_1": {
       "section": "system_design",
+      "skill_id": "sys_design_component_identification",
       "type": "verbal_design",
       "difficulty": "easy",
       "prompt_id": "design_rest_service",
-<<<<<<< Updated upstream
-
-      "success_threshold": 8,
-      "partial_threshold": 5,
-      "failure_threshold": 0,
-
       "transitions": {
-        "probe_deeper": {
-          "if": "score >= 8 AND reasoning_clear == true",
-          "then": "PROBE_SAME_NODE_DEEPER"
-        },
-        "downgrade_difficulty": {
-          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
-          "then": "debug_perf_1"
-        },
-        "move_forward": {
-          "if": "score >= 5",
-          "then": "sys_design_scale_1"
-        }
-      },
-
-      "edge_cases": {
-        "silence_over_10s": "downgrade_difficulty",
-        "guessing_without_reasoning": "downgrade_difficulty",
-        "partial_correct": "move_forward"
-      },
-
-      "governance": {
-        "allow_probe": true,
-        "max_probe_depth": 1,
-        "counts_toward_difficulty_exposure": true,
-        "forbidden_transition_reasons": [
-          "emotion_inference",
-          "confidence_estimation"
-        ],
-        "requires_human_review_if": [
-          "probe_depth_exceeded"
-        ]
+        "move_forward": { "then": "sys_design_scale_1" }
       }
     },
 
-=======
-      "transitions": {
-        "move_forward": {
-          "then": "sys_design_scale_1"
-        }
-      }
-    },
->>>>>>> Stashed changes
     "sys_design_scale_1": {
       "section": "system_design",
+      "skill_id": "sys_design_component_identification",
       "type": "verbal_design",
       "difficulty": "medium",
       "prompt_id": "scaling_read_heavy",
-<<<<<<< Updated upstream
-
-      "success_threshold": 7,
-      "partial_threshold": 4,
-      "failure_threshold": 0,
-
       "transitions": {
-        "probe_deeper": {
-          "if": "score >= 7 AND reasoning_clear == true",
-          "then": "PROBE_SAME_NODE_DEEPER"
-        },
-        "downgrade_difficulty": {
-          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
-          "then": "sys_design_api_1"
-        },
-        "move_forward": {
-          "if": "score >= 4",
-          "then": "sys_design_tradeoff_1"
-        }
-      },
-
-      "edge_cases": {
-        "silence_over_10s": "downgrade_difficulty",
-        "guessing_without_reasoning": "downgrade_difficulty",
-        "incomplete_answer": "move_forward"
-      },
-
-      "governance": {
-        "allow_probe": true,
-        "max_probe_depth": 1,
-        "counts_toward_difficulty_exposure": true,
-        "forbidden_transition_reasons": [
-          "emotion_inference"
-        ],
-        "requires_human_review_if": [
-          "probe_depth_exceeded"
-        ]
+        "move_forward": { "then": "sys_design_tradeoff_1" }
       }
     },
 
-=======
-      "transitions": {
-        "move_forward": {
-          "then": "sys_design_tradeoff_1"
-        }
-      }
-    },
->>>>>>> Stashed changes
     "sys_design_tradeoff_1": {
       "section": "system_design",
+      "skill_id": "sys_design_component_identification",
       "type": "verbal_reasoning",
       "difficulty": "medium",
       "prompt_id": "cache_vs_db_tradeoff",
-<<<<<<< Updated upstream
-
-      "success_threshold": 7,
-      "partial_threshold": 4,
-      "failure_threshold": 0,
-
-      "transitions": {
-        "downgrade_difficulty": {
-          "if": "silence_seconds > 10 OR guessing_without_reasoning == true",
-          "then": "sys_design_scale_1"
-        },
-        "move_forward": {
-          "if": "score >= 4",
-          "then": "END_INTERVIEW"
-        }
-      },
-
-      "edge_cases": {
-        "silence_over_10s": "downgrade_difficulty",
-        "guessing_without_reasoning": "downgrade_difficulty",
-        "partial_correct": "move_forward"
-      },
-
-      "governance": {
-        "allow_probe": false,
-        "counts_toward_difficulty_exposure": true,
-        "forbidden_transition_reasons": [
-          "emotion_inference",
-          "personality_traits",
-          "confidence_estimation"
-        ],
-        "requires_human_review_if": [
-          "early_termination",
-          "ambiguous_end_condition"
-        ]
-      }
-    }
-  }
-}
-=======
       "transitions": {}
     }
   }
 }
->>>>>>> Stashed changes

@@ -1,5 +1,4 @@
 {
-<<<<<<< Updated upstream
   "versioning": {
     "schema_version": "1.0.0",
     "config_version": "1.1.0",
@@ -15,27 +14,15 @@
   "sections": [
     {
       "section_id": "dsa",
-=======
-  "role": "Software Engineer",
-  "level": ["Entry", "Mid"],
-  "sections": [
-    {
-      "id": "dsa",
->>>>>>> Stashed changes
       "name": "Data Structures and Algorithms",
       "objective": "Assess core problem-solving, data structures, and algorithmic thinking"
     },
     {
-<<<<<<< Updated upstream
       "section_id": "debugging",
-=======
-      "id": "debugging",
->>>>>>> Stashed changes
       "name": "Debugging",
       "objective": "Assess ability to reason about incorrect code and identify logical or runtime issues"
     },
     {
-<<<<<<< Updated upstream
       "section_id": "system_design",
       "name": "System Design (Verbal)",
       "objective": "Assess foundational system design reasoning and trade-off thinking"
@@ -119,20 +106,9 @@
 
   "human_review_mandatory_if_any_event": true
   },
-=======
-      "id": "system_design",
-      "name": "System Design",
-      "objective": "Assess foundational system design reasoning and trade-off thinking"
-    }
-  ],
->>>>>>> Stashed changes
   "constraints": {
     "deterministic": true,
     "equal_difficulty_exposure": true,
     "no_randomization": true
   }
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes

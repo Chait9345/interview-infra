@@ -1,0 +1,20 @@
+{
+  "candidate_id": "CAND_001",
+  "role": "Software Engineer",
+  "level": "Entry",
+  "responses": [
+    {
+      "skill_id": "dsa_problem_decomposition",
+      "evidence": [
+        "Clear articulation of subproblems",
+        "Stepwise approach to solving the task"
+      ]
+    },
+    {
+      "skill_id": "dsa_complexity_awareness",
+      "evidence": [
+        "Stated time complexity"
+      ]
+    }
+  ]
+}
